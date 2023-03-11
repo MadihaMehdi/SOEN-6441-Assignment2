@@ -4,12 +4,13 @@ import org.example.Database.RentalUnitRepository;
 import org.example.models.AddressFactory;
 import org.example.models.RentalUnit;
 import org.example.models.RentalUnitFactory;
-import org.example.models.Tenant;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * This is the rental units controller
+ * which performs every operation
+ * regarding the units
+ */
 public class RentalUnitController {
     private RentalUnitFactory factory;
     private AddressFactory adFactory;
@@ -17,12 +18,19 @@ public class RentalUnitController {
 
     RentalUnitRepository repository;
 
+    /**
+     * Constructor
+     */
     public RentalUnitController(RentalUnitRepository obj){
         repository = obj;
         factory = new RentalUnitFactory();
         adFactory = new AddressFactory();
     }
 
+    /**
+     * create a unit and
+     * store it in the database
+     */
     public void createRentalUnit (){
         RentalUnit obj = null;
         System.out.println("Please enter the type of rental unit you want to create");
@@ -38,38 +46,69 @@ public class RentalUnitController {
         obj.setRented(false);
         repository.save(obj);
     }
+
+    /**
+     * @return  a unit
+     * from the database by
+     * searching its ID
+     */
     public RentalUnit getRentalUnit(int Id){
         return repository.get(Id);
     }
 
-
-    public void removeRentalUnit(int Id){
+    /**
+     * @return a string indicating if
+     * a unit has been deleted or not
+     */
+    public String removeRentalUnit(int Id){
         RentalUnit obj = getRentalUnit(Id);
         if(repository.delete(obj))
-            System.out.println("The unit has been deleted");
+            return ("The unit has been deleted");
         else
-            System.out.println("It seems there is no unit with this ID");
+            return ("It seems there is no unit with this ID");
     }
-    public void changeRent(int Id){
+
+    /**
+     * @return a string indicating if
+     * a unit rented property has been
+     * changed or not
+     */
+    public String changeRent(int Id){
         System.out.println("Please Enter the state of the rental unit");
-        String type = input.nextLine();
         boolean outcome = false;
-        if(type.equals("rent"))
+        if(input.equals("rent"))
             outcome = repository.update(Id,true);
-        else if(type.equals("vacant"))
+        else if(input.equals("vacant"))
             outcome = repository.update(Id, false);
 
         if(outcome)
-            System.out.println("The type of RentalUnit is changed");
+            return ("The type of RentalUnit is changed");
         else
-            System.out.println("We can't change the type at the moment");
+            return ("We can't change the type at the moment");
+    }
 
+    /**
+     * display all the units in the database
+     */
+    public void displayAllUnits(){
+        for(RentalUnit r: repository.getAll())
+            System.out.println(r);
     }
-    public void rentedUnits(){
-        repository.getAllRented();
+
+    /**
+     * display all the rented units in the database
+     */
+    public void displayRentedUnits(){
+        for(RentalUnit r: repository.getAllRented())
+            System.out.println(r);
     }
+
+    /**
+     * display all the vacant units in the database
+     */
     public void vacantUnits(){
-        repository.getAllVacant();
+        for(RentalUnit r: repository.getAllVacant())
+            System.out.println(r);
     }
 
 

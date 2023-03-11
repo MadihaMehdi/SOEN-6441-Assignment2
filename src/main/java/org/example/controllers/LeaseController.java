@@ -4,25 +4,36 @@ import org.example.Database.LeaseRepository;
 import org.example.Database.RentalUnitRepository;
 import org.example.Database.TenantRepository;
 import org.example.models.Lease;
+import org.example.models.Tenant;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * This is the lease controller
+ * which performs every operation
+ * regarding the leases
+ */
 public class LeaseController {
     TenantRepository tenantRepository;
     RentalUnitRepository rentalUnitRepository;
     LeaseRepository leaseRepository;
     Scanner input = new Scanner(System.in);
 
+    /**
+     * Constructor
+     */
     public LeaseController(TenantRepository tenantRepository, RentalUnitRepository rentalUnitRepository, LeaseRepository leaseRepository){
         this.leaseRepository = leaseRepository;
         this.tenantRepository = tenantRepository;
         this.rentalUnitRepository = rentalUnitRepository;
     }
 
+    /**
+     * create a lease and
+     * store it in the database
+     */
     public void rentUnit() throws ParseException {
         Lease obj = new Lease();
         try {
@@ -45,7 +56,21 @@ public class LeaseController {
         }
     }
 
-    public void leases(){
-        leaseRepository.getAll();
+    /**
+     * display all the leases in the database
+     */
+    public void displayLeases(){
+        for(Lease l: leaseRepository.getAll())
+            System.out.println(l);
     }
+
+    /**
+     * display all the tenants in the database
+     * These tenants have a lease and rented property
+     */
+    public void displayTenantsInLeases(){
+        for (Tenant t: leaseRepository.getAllTenants())
+            System.out.println(t);
+    }
+
 }

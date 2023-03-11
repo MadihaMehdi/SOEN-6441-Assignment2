@@ -4,14 +4,29 @@ import org.example.models.RentalUnit;
 
 import java.util.ArrayList;
 
+/**
+ * This is the mocked database of the rental units
+ * in the system
+ */
+
 public class RentalUnitRepository {
     private ArrayList<RentalUnit> rentalUnitList = new ArrayList<>();
 
-    public void save(RentalUnit obj){
-        rentalUnitList.add(obj);
+    /**
+     * @return the if a unit has been
+     * saved in the database
+     */
+    public boolean save(RentalUnit obj){
+
+        return rentalUnitList.add(obj);
     }
+
+    /**
+     * @return the if a unit has been
+     * deleted from the database
+     */
     public boolean delete(RentalUnit obj){
-        return rentalUnitList.contains(obj);
+        return rentalUnitList.remove(obj);
     }
     public RentalUnit get(int id) {
         RentalUnit obj = null;
@@ -20,23 +35,58 @@ public class RentalUnitRepository {
                 obj =  r;
         return obj;
     }
-    public void getAll(){
+
+    /**
+     * @return the unit stored
+     * in the database who matches
+     * the given ID
+     */
+    public RentalUnit getUnit(int Id){
+        RentalUnit unit = null;
         for(RentalUnit r: rentalUnitList)
-            System.out.println(r);
+            if(r.getId() == Id)
+                unit = r;
+        return unit;
     }
 
-    public void getAllRented(){
+    /**
+     * @return all the units stored
+     * in the database
+     */
+    public ArrayList<RentalUnit> getAll(){
+        return rentalUnitList;
+    }
+
+    /**
+     * @return all the rented units
+     * stored in the database
+     */
+    public ArrayList<RentalUnit>  getAllRented(){
+        ArrayList<RentalUnit> filteredList = new ArrayList<>();
         for(RentalUnit r: rentalUnitList)
             if(r.isRented())
-                System.out.println(r);
+                filteredList.add(r);
+
+        return filteredList;
     }
 
-    public void getAllVacant(){
+    /**
+     * @return all the vacant units
+     * stored in the database
+     */
+    public ArrayList<RentalUnit>  getAllVacant(){
+        ArrayList<RentalUnit> filteredList = new ArrayList<>();
         for(RentalUnit r: rentalUnitList)
             if(!r.isRented())
-                System.out.println(r);
+                filteredList.add(r);
+
+        return filteredList;
     }
 
+    /**
+     * @return if a unit becomes
+     * rented or vacant
+     */
     public boolean update(int Id, boolean type){
         boolean flag = false;
         for(RentalUnit u: rentalUnitList)

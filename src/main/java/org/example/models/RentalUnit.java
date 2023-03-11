@@ -23,7 +23,7 @@ public abstract class RentalUnit {
     }
 
     /**
-     * Default constructor
+     * Constructor
      */
     public RentalUnit(int bedrooms, int bathrooms, int area, Address address, boolean isRented) {
         this.bedrooms = bedrooms;

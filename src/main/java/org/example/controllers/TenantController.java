@@ -6,15 +6,28 @@ import org.example.models.Tenant;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This is the tenant controller
+ * which performs every operation
+ * regarding the tenants
+ */
+
 public class TenantController {
 
     TenantRepository tenantRepository;
     Scanner input = new Scanner(System.in);
 
+    /**
+     * Constructor
+     */
     public TenantController(TenantRepository obj){
         tenantRepository = obj;
     }
 
+    /**
+     * create a tenant and
+     * store it in the database
+     */
     public void createTenant(){
         Tenant obj = new Tenant();
         System.out.println("Please Enter The name of the Tenant");
@@ -24,19 +37,41 @@ public class TenantController {
         tenantRepository.save(obj);
     }
 
+    /**
+     * @return  a tenant
+     * from the database by
+     * searching his name
+     */
     public Tenant getTenant(String name){
         return tenantRepository.get(name);
     }
 
-    public void allTenants(){
-        tenantRepository.getAll();
+    /**
+     * @return all the tenants in
+     * the database
+     */
+    public ArrayList<Tenant> allTenants(){
+        return tenantRepository.getAll();
     }
 
-    public void removeTenant(String name){
+    /**
+     * @return a string indicating if
+     * a tenant has been deleted or not
+     */
+    public String removeTenant(String name){
         Tenant obj = getTenant(name);
         if(tenantRepository.delete(obj))
-            System.out.println("Tenant has been deleted");
+            return ("Tenant has been deleted");
         else
-            System.out.println("It seems there is no tenant with this name");
+            return ("It seems there is no tenant with this name");
+    }
+
+    /**
+     * display all the tenants in the database
+     * These tenants may not have a lease
+     */
+    public void displayTenants(){
+        for(Tenant t: allTenants())
+            System.out.println(t);
     }
 }

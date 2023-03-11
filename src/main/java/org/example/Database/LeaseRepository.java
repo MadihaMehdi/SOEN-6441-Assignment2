@@ -5,14 +5,28 @@ import org.example.models.Tenant;
 
 import java.util.ArrayList;
 
+/**
+ * This is the mocked database of the tenants
+ * in the system
+ */
+
 public class LeaseRepository {
     private ArrayList<Lease> leaseArrayList = new ArrayList<>();
 
-    public void save(Lease obj){
-        leaseArrayList.add(obj);
+    /**
+     * @return the if a lease has been
+     * saved in the database
+     */
+    public boolean save(Lease obj){
+        return leaseArrayList.add(obj);
     }
+
+    /**
+     * @return the if a lease has been
+     * deleted from the database
+     */
     public boolean delete(Lease obj){
-        return leaseArrayList.contains(obj);
+        return leaseArrayList.remove(obj);
     }
     public Lease get(int Id) {
         Lease obj = null;
@@ -22,14 +36,29 @@ public class LeaseRepository {
         return obj;
     }
 
-    public void getAll(){
-        for(Lease l: leaseArrayList)
-            System.out.println(l);
+    /**
+     * @return all the leases stored
+     * in the database
+     */
+    public ArrayList<Lease> getAll(){
+        return leaseArrayList;
     }
-    public void getAllTenants(){
+
+    /**
+     * @return all the tenants who
+     * have leases stored in the database
+     */
+    public ArrayList<Tenant> getAllTenants(){
+        ArrayList<Tenant> filteredList = new ArrayList<>();
         for(Lease l: leaseArrayList)
-            System.out.println(l.getTenant());
+            filteredList.add(l.getTenant());
+        return filteredList;
     }
+
+    /**
+     * @return a single tenants who is renting
+     * a unit and has a lease in the database
+     */
     public Tenant getSingleTenant(String name){
         Tenant obj = null;
         for(Lease l: leaseArrayList)
