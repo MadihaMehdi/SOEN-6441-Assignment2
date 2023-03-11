@@ -11,6 +11,14 @@ public class ApartmentAddress extends Address{
         this.unitNumber = unitNumber;
     }
 
+    @Override
+    public void BuildAddress() {
+        super.BuildAddress();
+        System.out.println("Please enter the unitNumber");
+        setUnitNumber(input.nextInt());
+
+    }
+
     public int getUnitNumber() {
         return unitNumber;
     }

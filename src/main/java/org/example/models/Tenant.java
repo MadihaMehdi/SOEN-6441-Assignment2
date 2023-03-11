@@ -1,44 +1,62 @@
 package org.example.models;
 
+/**
+ * This class is the model for Tenant
+ *
+ */
 public class Tenant {
-    private int Id;
     private String name;
     private String email;
 
-    public Tenant(int id, String name, String email) {
-        Id = id;
+    /**
+     * Tenant Default Constructor
+     */
+    public Tenant() {
+    }
+
+    /**
+     * Tenant Constructor
+     */
+    public Tenant(String name, String email) {
         this.name = name;
         this.email = email;
     }
 
-    public void setId(int id) {
-        Id = id;
-    }
-
+    /**
+     * set the name of the tenant
+     */
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * set the email of the tenant
+     */
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public int getId() {
-        return Id;
-    }
-
+    /**
+     * @return  the name of the tenant
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return  the email of the tenant
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * @return  the tenant information
+     */
     @Override
     public String toString() {
-        return "Dweller{" +
-                "Id=" + Id +
+        return "Tenant{" +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 '}';

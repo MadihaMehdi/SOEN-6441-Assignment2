@@ -3,15 +3,19 @@ package org.example.models;
 import java.util.Date;
 
 public class Lease {
-    private int Id;
+    private static int Id = 1000;
     private Tenant tenant;
     private RentalUnit rentalUnit;
     private Date startDate;
     private Date endDate;
     private double price;
 
-    public Lease(int id, Tenant tenant, RentalUnit rentalUnit, Date startDate, Date endDate, double price) {
-        Id = id;
+    public Lease(){
+        this.setId(Id);
+        Id++;
+    }
+
+    public Lease(Tenant tenant, RentalUnit rentalUnit, Date startDate, Date endDate, double price) {
         this.tenant = tenant;
         this.rentalUnit = rentalUnit;
         this.startDate = startDate;
@@ -23,7 +27,7 @@ public class Lease {
         Id = id;
     }
 
-    public void setDweller(Tenant tenant) {
+    public void setTenant(Tenant tenant) {
         this.tenant = tenant;
     }
 
@@ -47,7 +51,7 @@ public class Lease {
         return Id;
     }
 
-    public Tenant getDweller() {
+    public Tenant getTenant() {
         return tenant;
     }
 
@@ -71,7 +75,7 @@ public class Lease {
     public String toString() {
         return "Lease{" +
                 "Id=" + Id +
-                ", dweller=" + tenant +
+                ", tenant=" + tenant +
                 ", rentalUnit=" + rentalUnit +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +

@@ -1,7 +1,11 @@
 package org.example.models;
 
+/**
+ * This is the model of a rental unit
+ */
+
 public abstract class RentalUnit {
-    private String Id;
+    private static int Id = 1;
     private int bedrooms;
     private int bathrooms;
     private int area;
@@ -9,11 +13,19 @@ public abstract class RentalUnit {
     private boolean isRented;
 
 
+    /**
+     * Default constructor
+     */
     public RentalUnit() {
+        this.setId(Id);
+        Id++;
+
     }
 
-    public RentalUnit(String id, int bedrooms, int bathrooms, int area, Address address, boolean isRented) {
-        Id = id;
+    /**
+     * Default constructor
+     */
+    public RentalUnit(int bedrooms, int bathrooms, int area, Address address, boolean isRented) {
         this.bedrooms = bedrooms;
         this.bathrooms = bathrooms;
         this.area = area;
@@ -21,54 +33,93 @@ public abstract class RentalUnit {
         this.isRented = isRented;
     }
 
-    public void setId(String id) {
+    /**
+     * set the ID of the unit
+     */
+    public void setId(int id) {
         Id = id;
     }
 
+    /**
+     * set the number of bedrooms of the unit
+     */
     public void setBedrooms(int bedrooms) {
         this.bedrooms = bedrooms;
     }
 
+    /**
+     * set the number of bathrooms of the unit
+     */
     public void setBathrooms(int bathrooms) {
         this.bathrooms = bathrooms;
     }
 
+    /**
+     * set the area of the unit
+     */
     public void setArea(int area) {
         this.area = area;
     }
 
+    /**
+     * set the address of the unit
+     */
     public void setAddress(Address address) {
         this.address = address;
     }
 
+    /**
+     * set the type of the unit if it is vacant or not
+     */
     public void setRented(boolean rented) {
         isRented = rented;
     }
 
-    public String getId() {
+    /**
+     * @return the ID of the unit
+     */
+    public int getId() {
         return Id;
     }
 
+    /**
+     * @return the number of bedrooms of the unit
+     */
     public int getBedrooms() {
         return bedrooms;
     }
 
+    /**
+     * @return the number of bathrooms of the unit
+     */
     public int getBathrooms() {
         return bathrooms;
     }
 
+    /**
+     * @return the area of the unit
+     */
     public int getArea() {
         return area;
     }
 
+    /**
+     * @return the address of the unit
+     */
     public Address getAddress() {
         return address;
     }
 
+    /**
+     * @return the type of the unit
+     */
     public boolean isRented() {
         return isRented;
     }
 
+    /**
+     * @return the unit information
+     */
     @Override
     public String toString() {
         return "RentalUnit{" +

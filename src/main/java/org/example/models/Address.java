@@ -1,11 +1,15 @@
 package org.example.models;
 
+import java.util.Scanner;
+
 public abstract class Address {
     private int streetNumber;
     private String streetName;
     private String city;
     private String province;
     private String postalCode;
+
+    Scanner input = new Scanner(System.in);
 
     public Address() {
     }
@@ -56,6 +60,21 @@ public abstract class Address {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public void BuildAddress(){
+        System.out.println("Please enter the city name");
+        setCity(input.nextLine());
+        System.out.println("Please enter the street name");
+        setStreetName(input.nextLine());
+        System.out.println("Please enter the street number");
+        setStreetNumber(input.nextInt());
+        System.out.println("Please enter the province");
+        setProvince(input.nextLine());
+        System.out.println("Please enter the postal code");
+        setPostalCode(input.nextLine());
+
+
     }
 
     @Override
