@@ -13,7 +13,7 @@ public class TenantControllerTest {
 
     @BeforeClass
     public static void beforeClass(){
-        System.out.println("Starting testing for lease controller");
+        System.out.println("Starting testing for tenant controller");
     }
 
     @Test
@@ -21,6 +21,7 @@ public class TenantControllerTest {
         //arrange
 
         //act
+//        controller.createTenant();
         //assert
         assertEquals(1,tenantRepository.getAll().size());
     }

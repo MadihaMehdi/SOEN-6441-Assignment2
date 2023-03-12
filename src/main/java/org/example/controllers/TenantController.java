@@ -4,7 +4,6 @@ import org.example.Database.TenantRepository;
 import org.example.models.Tenant;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * This is the tenant controller

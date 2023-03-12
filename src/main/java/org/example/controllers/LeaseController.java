@@ -8,7 +8,6 @@ import org.example.models.Tenant;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Scanner;
 
 /**
  * This is the lease controller
@@ -19,7 +18,6 @@ public class LeaseController {
     TenantRepository tenantRepository;
     RentalUnitRepository rentalUnitRepository;
     LeaseRepository leaseRepository;
-    Scanner input = new Scanner(System.in);
 
     /**
      * Constructor

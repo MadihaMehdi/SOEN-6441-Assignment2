@@ -5,7 +5,6 @@ import org.example.Database.TenantRepository;
 import org.example.models.*;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * This is the rental units controller
@@ -83,7 +82,7 @@ public class RentalUnitController {
      * a unit rented property has been
      * changed or not
      */
-    public String changeRent(int Id, String state){
+    public String changeRented(int Id, String state){
         boolean outcome = false;
         if(state.equals("rent"))
             outcome = repository.update(Id,true);

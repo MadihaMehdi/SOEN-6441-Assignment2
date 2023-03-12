@@ -4,7 +4,6 @@ import org.example.Database.LeaseRepository;
 import org.example.models.PaymentSystem;
 import org.example.models.Tenant;
 
-import java.util.Scanner;
 
 /**
  * This is the payment controller
