@@ -13,7 +13,7 @@ public class ViewController {
     RentalUnitRepository rentalUnitRepository = new RentalUnitRepository();
 
     TenantController  tenantController= new TenantController(tenantRepository);
-    RentalUnitController rentalUnitController = new RentalUnitController(rentalUnitRepository);
+    RentalUnitController rentalUnitController = new RentalUnitController(rentalUnitRepository,tenantRepository);
     LeaseController leaseController = new LeaseController(tenantRepository,rentalUnitRepository,leaseRepository);
     PaymentController paymentController = new PaymentController(leaseRepository);
 
@@ -23,15 +23,11 @@ public class ViewController {
         //TODO all the menu logic should be here
 
         tenantController.createTenant();
-        tenantController.displayTenants();
+        tenantController.createTenant();
         rentalUnitController.createRentalUnit();
-        rentalUnitController.displayAllUnits();
-        leaseController.rentUnit();
-        leaseController.displayLeases();
-        leaseController.displayTenantsInLeases();
-        rentalUnitController.displayRentedUnits();
-        paymentController.payRent();
-        paymentController.displayAllPaidTenants();
+        rentalUnitController.RegisterTenant();
+        rentalUnitController.RegisterTenant();
+        rentalUnitController.changeRent();
     }
 
 }

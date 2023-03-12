@@ -50,6 +50,8 @@ public class LeaseController {
             obj.setPrice(input.nextDouble());
             rentalUnitRepository.update(obj.getRentalUnit().getId(),true);
             leaseRepository.save(obj);
+            System.out.println("Lease has been created");
+            System.out.println(obj);
         }
         catch (Exception e){
             System.out.println("It seems there was an error in renting the unit");
@@ -60,8 +62,14 @@ public class LeaseController {
      * display all the leases in the database
      */
     public void displayLeases(){
-        for(Lease l: leaseRepository.getAll())
-            System.out.println(l);
+        try {
+            for (Lease l : leaseRepository.getAll())
+                System.out.println(l);
+        }
+        catch (Exception e){
+            System.out.println("It seems something went wrong");
+        }
+
     }
 
     /**
@@ -69,8 +77,14 @@ public class LeaseController {
      * These tenants have a lease and rented property
      */
     public void displayTenantsInLeases(){
-        for (Tenant t: leaseRepository.getAllTenants())
-            System.out.println(t);
+        try {
+            for (Tenant t : leaseRepository.getAllTenants())
+                System.out.println(t);
+        }
+        catch (Exception e){
+            System.out.println("It seems something went wrong");
+        }
+
     }
 
 }

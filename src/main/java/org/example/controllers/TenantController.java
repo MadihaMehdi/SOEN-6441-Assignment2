@@ -37,6 +37,7 @@ public class TenantController {
             obj.setEmail(input.nextLine());
             tenantRepository.save(obj);
             System.out.println("Tenant has been created");
+            System.out.println(obj);
         }
         catch (Exception e){
             System.out.println("It seems something is wrong");

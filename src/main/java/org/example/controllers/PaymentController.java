@@ -40,8 +40,17 @@ public class PaymentController {
             return ("The rent is not paid");
     }
 
+    /**
+     * Display all tenants who paid the rent
+     */
     public void displayAllPaidTenants(){
-        System.out.println(system.toString());
+        try {
+            System.out.println(system.toString());
+        }
+        catch (Exception e){
+            System.out.println("It seems something went wrong");
+        }
+
     }
 
 
