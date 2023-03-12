@@ -22,12 +22,6 @@ public class ViewController {
     public void startProgram() throws ParseException {
         //TODO all the menu logic should be here
 
-        tenantController.createTenant();
-        tenantController.createTenant();
-        rentalUnitController.createRentalUnit();
-        rentalUnitController.RegisterTenant();
-        rentalUnitController.RegisterTenant();
-        rentalUnitController.changeRent();
     }
 
 }

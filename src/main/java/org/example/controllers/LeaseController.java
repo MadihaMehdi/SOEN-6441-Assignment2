@@ -34,20 +34,17 @@ public class LeaseController {
      * create a lease and
      * store it in the database
      */
-    public void rentUnit() throws ParseException {
+    public void rentUnit(String name, int Id, String startDate, String endDate, double rent) throws ParseException {
         Lease obj = new Lease();
         try {
-            System.out.println("Please enter the tenant name:");
-            obj.setTenant(tenantRepository.get(input.nextLine()));
-            System.out.println("Please enter the rental unit ID:");
-            obj.setRentalUnit(rentalUnitRepository.get(input.nextInt()));
+            obj.setTenant(tenantRepository.get(name));
+            obj.setRentalUnit(rentalUnitRepository.get(Id));
             System.out.println("Please Enter the start date of the lease in the format dd/mm/yyyy");
             String dateFormat = "dd/mm/yyyy";
-            obj.setStartDate(new SimpleDateFormat(dateFormat).parse(input.next()));
+            obj.setStartDate(new SimpleDateFormat(dateFormat).parse(startDate));
             System.out.println("Please Enter the end date of the lease in the format dd/mm/yyyy");
-            obj.setEndDate(new SimpleDateFormat(dateFormat).parse(input.next()));
-            System.out.println("Please Enter the monthly rent of the lease");
-            obj.setPrice(input.nextDouble());
+            obj.setEndDate(new SimpleDateFormat(dateFormat).parse(endDate));
+            obj.setPrice(rent);
             rentalUnitRepository.update(obj.getRentalUnit().getId(),true);
             leaseRepository.save(obj);
             System.out.println("Lease has been created");

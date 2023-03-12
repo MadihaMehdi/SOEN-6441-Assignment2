@@ -29,11 +29,8 @@ public class PaymentController {
      * @return a string indicating if
      * a tenant has payed the rent
      */
-    public String payRent(){
-        leaseRepository.getAllTenants();
-        Scanner input = new Scanner(System.in);
-        System.out.println("Please Enter the tenant name: ");
-        Tenant tenant = leaseRepository.getSingleTenant(input.nextLine());
+    public String payRent(String name){
+        Tenant tenant = leaseRepository.getSingleTenant(name);
         if(system.pay(tenant).equals("Success"))
             return (tenant.getName()+ " " + "has paid the rent");
         else

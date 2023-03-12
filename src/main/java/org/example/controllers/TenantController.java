@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class TenantController {
 
     TenantRepository tenantRepository;
-    Scanner input = new Scanner(System.in);
 
     /**
      * Constructor
@@ -28,13 +27,11 @@ public class TenantController {
      * create a tenant and
      * store it in the database
      */
-    public void createTenant(){
+    public void createTenant(String name, String email){
         Tenant obj = new Tenant();
         try {
-            System.out.println("Please Enter The name of the Tenant");
-            obj.setName(input.nextLine());
-            System.out.println("Please Enter The email of the Tenant");
-            obj.setEmail(input.nextLine());
+            obj.setName(name);
+            obj.setEmail(email);
             tenantRepository.save(obj);
             System.out.println("Tenant has been created");
             System.out.println(obj);

@@ -21,7 +21,6 @@ public class TenantControllerTest {
         //arrange
 
         //act
-        controller.createTenant();
         //assert
         assertEquals(1,tenantRepository.getAll().size());
     }

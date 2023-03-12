@@ -17,7 +17,6 @@ public class RentalUnitController {
     private AddressFactory adFactory;
 
     Observer observer;
-    Scanner input = new Scanner(System.in);
 
     RentalUnitRepository repository;
 
@@ -38,21 +37,16 @@ public class RentalUnitController {
      * create a unit and
      * store it in the database
      */
-    public void createRentalUnit (){
+    public void createRentalUnit (String type, int numOfBed, int numOfBath, int area, boolean isRented){
         try {
             RentalUnit obj = null;
-            System.out.println("Please enter the type of rental unit you want to create");
-            String type = input.nextLine();
             obj = factory.getInstance(type);
             obj.setAddress(adFactory.getInstance(type));
             obj.getAddress().BuildAddress();
-            System.out.println("Please Enter the number of bedrooms");
-            obj.setBedrooms(input.nextInt());
-            System.out.println("Please Enter the number of bathrooms");
-            obj.setBathrooms(input.nextInt());
-            System.out.println("Please Enter the area");
-            obj.setArea(input.nextInt());
-            obj.setRented(false);
+            obj.setBedrooms(numOfBed);
+            obj.setBathrooms(numOfBath);
+            obj.setArea(area);
+            obj.setRented(isRented);
             repository.save(obj);
             System.out.println("Rental unit has been created");
             System.out.println(obj);
@@ -89,14 +83,11 @@ public class RentalUnitController {
      * a unit rented property has been
      * changed or not
      */
-    public String changeRent(){
-        System.out.println("Please enter the ID of the rental unit");
-        int Id = input.nextInt();
-        System.out.println("Please Enter the state of the rental unit");
+    public String changeRent(int Id, String state){
         boolean outcome = false;
-        if(input.nextLine().equals("rent"))
+        if(state.equals("rent"))
             outcome = repository.update(Id,true);
-        else if(input.nextLine().equals("vacant")) {
+        else if(state.equals("vacant")) {
             outcome = repository.update(Id, false);
             ArrayList<String> list = observer.getRegistered();
             for(String a: list){
@@ -158,12 +149,10 @@ public class RentalUnitController {
      * Register the tenants that
      * want to check if a unit became vacant or not
      */
-    public void RegisterTenant(){
+    public void RegisterTenant(int Id, String name){
         try {
-            System.out.println("Please enter the ID of the rental unit you want to observe");
-            RentalUnit obj = repository.getUnit(input.nextInt());
-            System.out.println("Please enter your name");
-            Tenant tenant = tenantRepository.get(input.next());
+            RentalUnit obj = repository.getUnit(Id);
+            Tenant tenant = tenantRepository.get(name);
             observer.subscribe(tenant, obj);
         }
         catch (Exception e){
