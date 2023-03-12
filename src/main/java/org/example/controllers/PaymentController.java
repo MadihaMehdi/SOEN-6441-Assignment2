@@ -34,10 +34,14 @@ public class PaymentController {
         Scanner input = new Scanner(System.in);
         System.out.println("Please Enter the tenant name: ");
         Tenant tenant = leaseRepository.getSingleTenant(input.nextLine());
-        if(system.pay(tenant))
+        if(system.pay(tenant).equals("Success"))
             return (tenant.getName()+ " " + "has paid the rent");
         else
             return ("The rent is not paid");
+    }
+
+    public void displayAllPaidTenants(){
+        System.out.println(system.toString());
     }
 
 

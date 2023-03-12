@@ -35,8 +35,13 @@ public class PaymentSystem {
     /**
      * @return the if the payment went through
      */
-    public boolean pay(Tenant obj){
-        return map.put(obj, true);
+    public String pay(Tenant obj){
+        int size = map.size();
+        map.put(obj,true);
+        if(++size == map.size())
+            return "Success";
+        else
+            return "Failed";
     }
 
     /**

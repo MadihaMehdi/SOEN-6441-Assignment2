@@ -15,20 +15,23 @@ public class ViewController {
     TenantController  tenantController= new TenantController(tenantRepository);
     RentalUnitController rentalUnitController = new RentalUnitController(rentalUnitRepository);
     LeaseController leaseController = new LeaseController(tenantRepository,rentalUnitRepository,leaseRepository);
+    PaymentController paymentController = new PaymentController(leaseRepository);
 
     Scanner input = new Scanner(System.in);
 
     public void startProgram() throws ParseException {
         //TODO all the menu logic should be here
 
-//        tenantController.createTenant();
-//        tenantController.displayTenants();
-//        rentalUnitController.createRentalUnit();
-//        rentalUnitController.displayAllUnits();
-//        leaseController.rentUnit();
-//        leaseController.displayLeases();
-//        leaseController.displayTenantsInLeases();
-//        rentalUnitController.displayRentedUnits();
+        tenantController.createTenant();
+        tenantController.displayTenants();
+        rentalUnitController.createRentalUnit();
+        rentalUnitController.displayAllUnits();
+        leaseController.rentUnit();
+        leaseController.displayLeases();
+        leaseController.displayTenantsInLeases();
+        rentalUnitController.displayRentedUnits();
+        paymentController.payRent();
+        paymentController.displayAllPaidTenants();
     }
 
 }
