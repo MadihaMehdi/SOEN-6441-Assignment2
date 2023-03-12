@@ -43,9 +43,9 @@ public class LeaseController {
             obj.setRentalUnit(rentalUnitRepository.get(input.nextInt()));
             System.out.println("Please Enter the start date of the lease in the format dd/mm/yyyy");
             String dateFormat = "dd/mm/yyyy";
-            obj.setStartDate(new SimpleDateFormat(dateFormat).parse(input.nextLine()));
+            obj.setStartDate(new SimpleDateFormat(dateFormat).parse(input.next()));
             System.out.println("Please Enter the end date of the lease in the format dd/mm/yyyy");
-            obj.setEndDate(new SimpleDateFormat(dateFormat).parse(input.nextLine()));
+            obj.setEndDate(new SimpleDateFormat(dateFormat).parse(input.next()));
             System.out.println("Please Enter the monthly rent of the lease");
             obj.setPrice(input.nextDouble());
             rentalUnitRepository.update(obj.getRentalUnit().getId(),true);

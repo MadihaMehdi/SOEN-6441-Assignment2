@@ -117,9 +117,9 @@ public abstract class Address {
         System.out.println("Please enter the street number");
         setStreetNumber(input.nextInt());
         System.out.println("Please enter the province");
-        setProvince(input.nextLine());
+        setProvince(input.next());
         System.out.println("Please enter the postal code");
-        setPostalCode(input.nextLine());
+        setPostalCode(input.next());
 
 
     }

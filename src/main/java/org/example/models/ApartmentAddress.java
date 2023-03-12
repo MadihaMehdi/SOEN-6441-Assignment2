@@ -31,7 +31,7 @@ public class ApartmentAddress extends Address{
     public void BuildAddress() {
         super.BuildAddress();
         System.out.println("Please enter the unitNumber");
-        setUnitNumber(input.nextInt());
+        setUnitNumber(Integer.parseInt(input.next()));
 
     }
 

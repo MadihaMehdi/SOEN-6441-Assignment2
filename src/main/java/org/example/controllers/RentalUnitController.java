@@ -34,8 +34,9 @@ public class RentalUnitController {
     public void createRentalUnit (){
         RentalUnit obj = null;
         System.out.println("Please enter the type of rental unit you want to create");
-        obj = factory.getInstance(input.nextLine());
-        obj.setAddress(adFactory.getInstance(input.nextLine()));
+        String type = input.nextLine();
+        obj = factory.getInstance(type);
+        obj.setAddress(adFactory.getInstance(type));
         obj.getAddress().BuildAddress();
         System.out.println("Please Enter the number of bedrooms");
         obj.setBedrooms(input.nextInt());

@@ -30,11 +30,17 @@ public class TenantController {
      */
     public void createTenant(){
         Tenant obj = new Tenant();
-        System.out.println("Please Enter The name of the Tenant");
-        obj.setName(input.nextLine());
-        System.out.println("Please Enter The email of the Tenant");
-        obj.setEmail(input.nextLine());
-        tenantRepository.save(obj);
+        try {
+            System.out.println("Please Enter The name of the Tenant");
+            obj.setName(input.nextLine());
+            System.out.println("Please Enter The email of the Tenant");
+            obj.setEmail(input.nextLine());
+            tenantRepository.save(obj);
+            System.out.println("Tenant has been created");
+        }
+        catch (Exception e){
+            System.out.println("It seems something is wrong");
+        }
     }
 
     /**
@@ -59,11 +65,17 @@ public class TenantController {
      * a tenant has been deleted or not
      */
     public String removeTenant(String name){
-        Tenant obj = getTenant(name);
-        if(tenantRepository.delete(obj))
-            return ("Tenant has been deleted");
-        else
-            return ("It seems there is no tenant with this name");
+        try {
+            Tenant obj = getTenant(name);
+            if (tenantRepository.delete(obj))
+                return ("Tenant has been deleted");
+            else
+                return ("It seems there is no tenant with this name");
+        }
+        catch (Exception e){
+            System.out.println("It seems something is wrong");
+        }
+        return "";
     }
 
     /**
@@ -71,7 +83,12 @@ public class TenantController {
      * These tenants may not have a lease
      */
     public void displayTenants(){
-        for(Tenant t: allTenants())
-            System.out.println(t);
+        try {
+            for (Tenant t : allTenants())
+                System.out.println(t);
+        }
+        catch (Exception e){
+            System.out.println("It seems something is wrong with this operation");
+        }
     }
 }

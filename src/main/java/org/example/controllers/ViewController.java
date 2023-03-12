@@ -4,6 +4,7 @@ import org.example.Database.LeaseRepository;
 import org.example.Database.RentalUnitRepository;
 import org.example.Database.TenantRepository;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class ViewController {
@@ -17,10 +18,17 @@ public class ViewController {
 
     Scanner input = new Scanner(System.in);
 
-    public void startProgram(){
+    public void startProgram() throws ParseException {
         //TODO all the menu logic should be here
 
-        tenantController.createTenant();
+//        tenantController.createTenant();
+//        tenantController.displayTenants();
+//        rentalUnitController.createRentalUnit();
+//        rentalUnitController.displayAllUnits();
+//        leaseController.rentUnit();
+//        leaseController.displayLeases();
+//        leaseController.displayTenantsInLeases();
+//        rentalUnitController.displayRentedUnits();
     }
 
 }
