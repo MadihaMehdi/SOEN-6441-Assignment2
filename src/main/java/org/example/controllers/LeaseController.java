@@ -32,10 +32,10 @@ public class LeaseController {
      * create a lease and
      * store it in the database
      */
-    public void rentUnit(String name, int Id, String startDate, String endDate, double rent) throws ParseException {
+    public void rentUnit(String email, int Id, String startDate, String endDate, double rent) throws ParseException {
         Lease obj = new Lease();
         try {
-            obj.setTenant(tenantRepository.get(name));
+            obj.setTenant(tenantRepository.get(email));
             obj.setRentalUnit(rentalUnitRepository.get(Id));
             System.out.println("Please Enter the start date of the lease in the format dd/mm/yyyy");
             String dateFormat = "dd/mm/yyyy";

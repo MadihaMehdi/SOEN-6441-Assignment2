@@ -32,10 +32,10 @@ public class TenantRepository {
      * @return the Tenant by searching
      * through his name in the database
      */
-    public Tenant get(String name) {
+    public Tenant get(String email) {
         Tenant obj = null;
         for (Tenant t : tenantArrayList)
-            if (t.getName().equals(name))
+            if (t.getEmail().equals(email))
                 obj =  t;
         return obj;
     }

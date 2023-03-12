@@ -28,8 +28,8 @@ public class PaymentController {
      * @return a string indicating if
      * a tenant has payed the rent
      */
-    public String payRent(String name){
-        Tenant tenant = leaseRepository.getSingleTenant(name);
+    public String payRent(String email){
+        Tenant tenant = leaseRepository.getSingleTenant(email);
         if(system.pay(tenant).equals("Success"))
             return (tenant.getName()+ " " + "has paid the rent");
         else

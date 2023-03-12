@@ -45,8 +45,8 @@ public class TenantController {
      * from the database by
      * searching his name
      */
-    public Tenant getTenant(String name){
-        return tenantRepository.get(name);
+    public Tenant getTenant(String email){
+        return tenantRepository.get(email);
     }
 
     /**
@@ -61,9 +61,9 @@ public class TenantController {
      * @return a string indicating if
      * a tenant has been deleted or not
      */
-    public String removeTenant(String name){
+    public String removeTenant(String email){
         try {
-            Tenant obj = getTenant(name);
+            Tenant obj = getTenant(email);
             if (tenantRepository.delete(obj))
                 return ("Tenant has been deleted");
             else

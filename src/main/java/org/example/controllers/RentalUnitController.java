@@ -36,7 +36,7 @@ public class RentalUnitController {
      * create a unit and
      * store it in the database
      */
-    public void createRentalUnit (String type, int numOfBed, int numOfBath, int area, boolean isRented){
+    public void createRentalUnit (String type, int numOfBed, int numOfBath, int area){
         try {
             RentalUnit obj = null;
             obj = factory.getInstance(type);
@@ -45,7 +45,7 @@ public class RentalUnitController {
             obj.setBedrooms(numOfBed);
             obj.setBathrooms(numOfBath);
             obj.setArea(area);
-            obj.setRented(isRented);
+            obj.setRented(false);
             repository.save(obj);
             System.out.println("Rental unit has been created");
             System.out.println(obj);
@@ -148,10 +148,10 @@ public class RentalUnitController {
      * Register the tenants that
      * want to check if a unit became vacant or not
      */
-    public void RegisterTenant(int Id, String name){
+    public void RegisterTenant(int Id, String email){
         try {
             RentalUnit obj = repository.getUnit(Id);
-            Tenant tenant = tenantRepository.get(name);
+            Tenant tenant = tenantRepository.get(email);
             observer.subscribe(tenant, obj);
         }
         catch (Exception e){
