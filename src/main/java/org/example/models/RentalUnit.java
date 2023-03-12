@@ -5,7 +5,9 @@ package org.example.models;
  */
 
 public abstract class RentalUnit {
-    private static int Id = 1;
+
+    static int serializer = 1;
+    private int Id;
     private int bedrooms;
     private int bathrooms;
     private int area;
@@ -17,8 +19,8 @@ public abstract class RentalUnit {
      * Default constructor
      */
     public RentalUnit() {
-        this.setId(Id);
-        Id++;
+        this.setId(serializer);
+        serializer++;
 
     }
 
@@ -37,7 +39,7 @@ public abstract class RentalUnit {
      * set the ID of the unit
      */
     public void setId(int id) {
-        Id = id;
+        this.Id = id;
     }
 
     /**
@@ -123,7 +125,7 @@ public abstract class RentalUnit {
     @Override
     public String toString() {
         return "RentalUnit{" +
-                "Id='" + Id + '\'' +
+                "Id='" + this.Id + '\'' +
                 ", bedrooms=" + bedrooms +
                 ", bathrooms=" + bathrooms +
                 ", area=" + area +

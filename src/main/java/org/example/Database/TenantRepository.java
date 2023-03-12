@@ -30,7 +30,7 @@ public class TenantRepository {
 
     /**
      * @return the Tenant by searching
-     * through his name in the database
+     * through his email in the database
      */
     public Tenant get(String email) {
         Tenant obj = null;

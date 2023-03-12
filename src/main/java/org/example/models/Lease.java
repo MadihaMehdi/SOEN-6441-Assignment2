@@ -7,7 +7,9 @@ import java.util.Date;
  */
 
 public class Lease {
-    private static int Id = 1000;
+
+    static int serializer = 1000;
+    private int Id;
     private Tenant tenant;
     private RentalUnit rentalUnit;
     private Date startDate;
@@ -18,8 +20,8 @@ public class Lease {
      * Default constructor
      */
     public Lease(){
-        setId(Id);
-        Id++;
+        setId(serializer);
+        serializer++;
     }
 
     /**
