@@ -24,12 +24,12 @@ public class TenantControllerTest {
     }
 
     @Before
-    public static void beforeMethod(){
+    public  void beforeMethod(){
         System.out.println("Starting test case in Tenant Controller");
     }
 
     @After
-    public static void afterMethod(){
+    public  void afterMethod(){
         System.out.println("Ending test case in Tenant controller");
     }
 

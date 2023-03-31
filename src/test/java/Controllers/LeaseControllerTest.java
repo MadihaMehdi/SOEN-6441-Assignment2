@@ -17,22 +17,22 @@ public class LeaseControllerTest {
     LeaseController controller= new LeaseController(tenantRepository,rentalUnitRepository,leaseRepository);
 
     @BeforeClass
-    public static void beforeClass(){
+    public  static void beforeClass(){
         System.out.println("Starting testing for Lease Controller");
     }
 
     @AfterClass
-    public static void afterClass(){
+    public  static void afterClass(){
         System.out.println("Ending testing for Lease controller");
     }
 
     @Before
-    public static void beforeMethod(){
+    public  void beforeMethod(){
         System.out.println("Starting test case in Lease Controller");
     }
 
     @After
-    public static void afterMethod(){
+    public  void afterMethod(){
         System.out.println("Ending test case in Lease controller");
     }
 

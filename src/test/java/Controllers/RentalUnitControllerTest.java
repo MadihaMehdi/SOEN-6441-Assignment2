@@ -39,12 +39,12 @@ public class RentalUnitControllerTest {
     }
 
     @Before
-    public static void beforeMethod(){
+    public  void beforeMethod(){
         System.out.println("Starting test case in Rental Unit Controller");
     }
 
     @After
-    public static void afterMethod(){
+    public  void afterMethod(){
         System.out.println("Ending test case in Rental Unit controller");
     }
 

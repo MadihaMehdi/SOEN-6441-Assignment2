@@ -37,10 +37,8 @@ public class LeaseController {
         try {
             obj.setTenant(tenantRepository.get(email));
             obj.setRentalUnit(rentalUnitRepository.get(Id));
-            System.out.println("Please Enter the start date of the lease in the format dd/mm/yyyy");
             String dateFormat = "dd/mm/yyyy";
             obj.setStartDate(new SimpleDateFormat(dateFormat).parse(startDate));
-            System.out.println("Please Enter the end date of the lease in the format dd/mm/yyyy");
             obj.setEndDate(new SimpleDateFormat(dateFormat).parse(endDate));
             obj.setPrice(rent);
             rentalUnitRepository.update(obj.getRentalUnit().getId(),true);
