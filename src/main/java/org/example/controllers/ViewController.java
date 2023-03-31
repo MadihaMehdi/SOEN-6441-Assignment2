@@ -20,8 +20,6 @@ public class ViewController {
 
     public void startProgram() {
         //TODO all the menu logic should be here
-        //System.out.println("Hello world");
-        //tenantController.createTenant();
 
         int choice;
 
